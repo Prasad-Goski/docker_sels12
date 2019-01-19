@@ -1,0 +1,23 @@
+Configure docker to use PROXY
+
+Login and sudo to root:
+sudo -i
+
+Create directory and new file:
+mkdir /etc/systemd/system/docker.service.d
+vi http-proxy.conf
+
+Add below lines:
+[Service]
+Environment="HTTP_PROXY=http://usproxy.es.company.com:8080/"
+
+Restart:
+systemctl daemon-reload
+systemctl show --property Environment docker
+systemctl restart docker
+
+
+Tensorflow:
+docker pull tensorflow/tensorflow
+docker run -it --rm tensorflow/tensorflow bash
+root@48f792173a6a:/notebooks# stat here...
