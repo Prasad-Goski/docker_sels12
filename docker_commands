@@ -1,0 +1,27 @@
+1) Simple Mode
+# Start Tensorflow Container on port 8888
+docker run -it -p 8888:8888 tensorflow/tensorflow
+# Use below URL to login to Jupyter Notebook
+http://cdliprodpoc2:8888/?token=03297b1967d495dce3e35303c31a8e3e00493980a56da285c1caec016fd63143
+
+
+
+2) Detach Mode
+# Start Tf Container but DETACH, remove -it and add -d
+docker run -d -p 8888:8888 tensorflow/tensorflow
+Output will show long container_id
+Get the short container_id by using below instect command
+docker ps -a OR docker container ls
+
+Get the Security token needed for URL using below command
+docker exec 11cfdc28e4a4 jupyter notebook list
+
+eg:
+docker exec 11cfdc28e4a4 jupyter notebook list
+Currently running servers:
+http://0.0.0.0:8888/?token=249aa59ccfa1313848134cce1721e74f69cf94ad3adcfa0c :: /notebooks
+
+Replace IP with actual server to start jupyter notebook in web broweser:
+
+x) Stop
+docker container stop <CONTAINER ID>
